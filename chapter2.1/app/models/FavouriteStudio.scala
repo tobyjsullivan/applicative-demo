@@ -17,6 +17,21 @@ object FavouriteStudio {
 
     favourite
   }
+
+  def delete(userId: Int, studioId: Int) =
+    FavouriteStudioDAO.delete(FavouriteStudio(userId, studioId))
+
+  def findAllByUser(userId: Int): List[FavouriteStudio] =
+    FavouriteStudioDAO.index(userId)
+
+  def find(userId: Int, studioId: Int): Option[FavouriteStudio] = {
+    val favourite = FavouriteStudio(userId, studioId)
+
+    if (FavouriteStudioDAO.exists(favourite))
+      Some(favourite)
+    else
+      None
+  }
 }
 
 case class FavouriteStudio(userId: Int, studioId: Int)
