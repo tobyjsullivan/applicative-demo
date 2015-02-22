@@ -13,3 +13,11 @@ curl http://localhost:9000/users/234985987/favouriteStudios
 curl -v http://localhost:9000/users/234985987/favouriteStudios/9174714
 curl -v -X DELETE http://localhost:9000/users/234985987/favouriteStudios/9174714
 curl -v http://localhost:9000/users/234985987/favouriteStudios/9174714
+
+# Chapter 3
+curl -X POST http://localhost:9000/users/234985987/favouriteStudios/3097147
+time curl http://localhost:9000/users/234985987/favouriteStudios
+time curl http://localhost:9000/users/234985987/favouriteStudios
+time curl http://localhost:9000/users/234985987/favouriteStudios/3097147
+time curl http://localhost:9000/users/234985987/favouriteStudios/3097147
+
