@@ -1,10 +1,16 @@
 package models
 
+import actors.NotificationActor
 import models.dao.FavouriteStudioDAO
+import play.api.libs.concurrent.Akka
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
 
+import play.api.Play.current
+
 object FavouriteStudio {
+  lazy val notificationActor = Akka.system.actorOf(NotificationActor.props)
+
   implicit val favouriteStudioWrites: Writes[FavouriteStudio] = (
     (JsPath \ "userId").write[Int] and
       (JsPath \ "studioId").write[Int]
@@ -14,6 +20,8 @@ object FavouriteStudio {
     val favourite = FavouriteStudio(userId, studioId)
 
     FavouriteStudioDAO.create(favourite)
+
+    notificationActor ! favourite
 
     favourite
   }
