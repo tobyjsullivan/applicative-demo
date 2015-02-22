@@ -1,11 +1,13 @@
 #!/bin/bash
 
-mysql.server start
+mysql.server restart
 
-mysql -h 127.0.0.1 -u root < db_clean.sql
+MYSQL_HOST=127.0.0.1
 
-mysql -h 127.0.0.1 -u root < db_init.sql
+mysql -h $MYSQL_HOST -u root < db_clean.sql
 
-mysql -h 127.0.0.1 -u favourites-svc -p1e0OZH5a9PCJ0Anj11ia0Wmy favourites-svc < db_schema.sql
+mysql -h $MYSQL_HOST -u root < db_init.sql
 
-mysql -h 127.0.0.1 -u favourites-svc -p1e0OZH5a9PCJ0Anj11ia0Wmy favourites-svc -e 'show tables;'
+mysql -h $MYSQL_HOST -u favourites-svc -p1e0OZH5a9PCJ0Anj11ia0Wmy favourites-svc < db_schema.sql
+
+mysql -h $MYSQL_HOST -u favourites-svc -p1e0OZH5a9PCJ0Anj11ia0Wmy favourites-svc -e 'show tables;'
