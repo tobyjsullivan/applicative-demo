@@ -1,0 +1,8 @@
+# Chapter 0
+(In browser) http://localhost:9000
+
+# Chapter 1
+curl -X POST http://localhost:9000/users/198374913/favouriteStudios/8621349
+
+# Chapter 2
+curl -X POST http://localhost:9000/users/234985987/favouriteStudios/9174714

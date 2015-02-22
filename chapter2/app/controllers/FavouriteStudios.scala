@@ -7,8 +7,8 @@ import play.api.mvc._
 
 object FavouriteStudios extends Controller {
   def add(userId: Int, studioId: Int) = Action {
-    // TODO: Add favourite
+    val favourite = FavouriteStudio.addFavourite(userId, studioId)
 
-    Ok(Json.obj("result" -> FavouriteStudio(userId, studioId)))
+    Ok(Json.obj("result" -> favourite))
   }
 }
