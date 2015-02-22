@@ -2,6 +2,9 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# API Endpoints
+POST    /users/:userId/favouriteStudios/:studioId   controllers.FavouriteStudios.add(userId: Int, studioId: Int)
+
 # Home page
 GET     /                           controllers.Application.index
 
