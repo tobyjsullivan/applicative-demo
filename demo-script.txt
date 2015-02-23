@@ -24,3 +24,6 @@ time curl http://localhost:9000/users/234985987/favouriteStudios/3097147
 # Chapter 4
 No demo possible atm...
 
+# Chapter 5
+curl -X POST http://localhost:9000/users/234985987/favouriteStudios/5297402
+
