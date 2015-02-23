@@ -24,7 +24,7 @@ object FriendDAO {
 
     fResponse.map { response =>
       // The response will be JSON so parse out the list of friends' IDs
-      val friendIds: List[Int] = (response.json \ "result").as[List[Int]]
+      val friendIds: List[Int] = (response.json \ "result" \\ "friendId").map(_.as[Int]).toList
 
       // Map the list of IDs to a list of friends
       friendIds.map(Friend.apply)
