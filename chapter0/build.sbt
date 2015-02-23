@@ -1,8 +1,10 @@
-name := """favourites-service"""
+name := """chapter0-demo"""
 
-version := "1.0-SNAPSHOT"
+version := "1.0"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
+
+doc in Compile <<= target.map(_ / "none")
 
 scalaVersion := "2.11.1"
 
