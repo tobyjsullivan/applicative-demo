@@ -1,7 +1,9 @@
 package actors
 
 import akka.actor.{Props, Actor}
-import models.FavouriteStudio
+import models.{FavouriteNotification, Friend, FavouriteStudio}
+
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object NotificationActor {
   def props: Props = Props(new NotificationActor)
@@ -14,9 +16,17 @@ class NotificationActor extends Actor {
   }
 
   private def notifyFriendsOfFavourite(favourite: FavouriteStudio): Unit = {
-    // TODO: Lookup friends
+    // Lookup friends
+    val fFriends = Friend.findAllFriends(favourite.userId)
 
-    // TODO: Send a push notification to each friend
+    // Send a push notification to each friend
+    for (
+      friends <- fFriends;
+      friend <- friends;
+      notification = FavouriteNotification(friend, favourite)
+    ) {
+      notification.send()
+    }
   }
 
 }
