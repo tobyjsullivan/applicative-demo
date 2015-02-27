@@ -9,7 +9,7 @@ import play.api.libs.json._
 import play.api.Play.current
 
 object FavouriteStudio {
-  lazy val notificationActor = Akka.system.actorOf(NotificationActor.props)
+  val notificationActor = Akka.system.actorOf(NotificationActor.props)
 
   implicit val favouriteStudioWrites: Writes[FavouriteStudio] = (
     (JsPath \ "userId").write[Int] and
